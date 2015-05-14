@@ -30,3 +30,4 @@
 	print_r ("<pre>");
 	echo $_SERVER['SERVER_NAME'];
 	print_r ("</pre>");
+
