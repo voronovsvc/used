@@ -9,11 +9,11 @@
 		print 'Catalog page!';
 		break;
 	  case '/auth':
-		print 'Страница автризации!';
+		print 'РЎС‚СЂР°РЅРёС†Р° Р°РІС‚СЂРёР·Р°С†РёРё!';
 		break;
 	}
 	
-//	или
+//	РёР»Рё
 	
 	echo "<br />";
 	echo "<br />";
@@ -21,7 +21,7 @@
 	$page = 'auth';
 	
 	if ($_SERVER['REQUEST_URI'] === "/".$page)
-	echo 'Страница: '.$page;
+	echo 'РЎС‚СЂР°РЅРёС†Р°: '.$page;
 	
 	
 	
