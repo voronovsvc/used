@@ -15,3 +15,8 @@ RewriteEngine On
 # Для PHP он называется mod_php
 
 # Ты включил mod_rewrite, но не описал никаких правил для перенаправления запросов
+
+RewriteCond %{REQUEST_FILENAME} !^favicon\.ico
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.php [L,QSA]
