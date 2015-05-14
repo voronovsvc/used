@@ -1,10 +1,12 @@
 <?php
-	$var = 1;
-	var_dump($_SERVER['REQUEST_URI'])
+switch ($_SERVER['REQUEST_URI']) {
+  case '/':
+    print 'Homepage!';
+    break;
 
-	# этого не было!
-	# залилось не все!!!
-	
-	
-?>
+  case '/catalog':
+    print 'Catalog page!';
+    break;
+}
+
 
