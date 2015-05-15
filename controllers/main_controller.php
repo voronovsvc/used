@@ -3,8 +3,8 @@
 	class Controller_Main {
 		
 		public function index () {
-			print 'Привет, Вы попали на главную нашего крутого сайта!'
-			
+			print 'Привет, Вы попали на главную нашего крутого сайта!';
+			print '<br /> и пусть кто то решит поспорить!!!';
 		}// close fun... index ()
 		
 	}// close Controller_Main
