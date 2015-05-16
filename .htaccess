@@ -15,6 +15,7 @@ RewriteEngine On
 # Для PHP он называется mod_php
 
 # Ты включил mod_rewrite, но не описал никаких правил для перенаправления запросов
+# Надо подробно разобрать что это за правила ниже, я их просто скатал с другого сайта
 
 RewriteCond %{REQUEST_FILENAME} !^favicon\.ico
 RewriteCond %{REQUEST_FILENAME} !-d
