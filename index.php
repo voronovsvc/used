@@ -23,17 +23,24 @@
 	
 	
 	
-	if ($_SERVER['REQUEST_URI'] === '/')
+	//if ($_SERVER['REQUEST_URI'] === '/') // зачем на мздесь проверка?
+	// все равно переменные перезаписываются!  ниже по условию
 	$controller_name = 'Main';
-	else
-	if ($_SERVER['REQUEST_URI'] == true) {
-		/** зписываем в controller_name $_SERVER['REQUEST_URI']
-			без слеша и с Заглавной буквы...
-			получаем имя контоллера
-		**/
-		$str = substr($_SERVER['REQUEST_URI'],1);
-		$controller_name = ucfirst($str);
-	} 
+	$action = 'index';
+	
+	// сколько элементов в массиве должно быть? в будушем адресная строка не увеличится?
+	$uri = explode('/', $_SERVER['REQUEST_URI'], 3/*?*/); 
+	
+	if ($uri[1])
+	$controller_name = $uri[1];
+	
+	if ($uri[2])
+	$acnion = $uri[2]; // я так пониьаю сюда будет записываться метод,
+	// которым будет обработана страница?
+	
+	echo "<pre>";
+	print_r ($uri);
+	echo "</pre>";
 	
 	$dir_check = 'controllers/'.
 	strtolower($controller_name).
@@ -41,16 +48,10 @@
 	
 	if (file_exists($dir_check)) {
 		include_once ($dir_check);
-	
-		/** Допустим файл подключился
-			Мы знаем что все классы котроллеров имеют вид Controller_ИМЯ_КОНТРОЛЛЕРА
-			Имя котроллера нам уже известно, оно записано в $controller_name
-			Значит осталось добавить к этому имени 'Controller_' и получим название класса
 		
-		 **/
-	    $class_name = 'Controller_' . $controller_name; // Получили название класса
-	    $controller = new $class_name; // Создали объект этого класса
-		$action = 'index';
+	    $class_name = 'Controller_' . $controller_name;
+	    $controller = new $class_name;
+		// $action = 'index';
 	    // на всякий случай проверили, что у этого класса есть нужный нам метод
 	    if(method_exists($controller, $action)) {
 			// вызываем нужный метод, в нашем случае это index()
@@ -59,7 +60,7 @@
 	} else {
 		
 		header('HTTP/1.1 404 Not Found');
-        header("Status: 404 Not Found");
-        print 'Page Not Found!';	
-        exit();
+		header("Status: 404 Not Found");
+		print 'Page Not Found!';	
+		exit();
 	}
