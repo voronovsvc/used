@@ -7,6 +7,6 @@
 			
 		}// close render()
 		
-	}// close Tpl_Manager
+	}// close View
 	
 ?>
