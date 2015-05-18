@@ -5,6 +5,6 @@
 	$rout = new Route;
 	$rout->start();
 	
-	if (file_exists('tpl_manager.php')) {
-		include_once ('tpl_manager.php');
+	if (file_exists('view.php')) {
+		include_once ('view.php');
 	}
