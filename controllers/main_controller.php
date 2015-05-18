@@ -6,7 +6,7 @@
 			
 			
 			$view = new View;
-			$view->render('view/main/index.tpl');
+			$view->render('main/index.tpl');
 			
 			/*
 			print 'Привет, Вы попали на главную нашего крутого сайта!';
