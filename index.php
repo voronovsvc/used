@@ -6,5 +6,3 @@
 	$route = new Route;
 	$route->start();
 	
-	$view = new View;
-	$view->render();
