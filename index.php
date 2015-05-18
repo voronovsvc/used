@@ -1,10 +1,10 @@
 <?php
 	
-	require_once ('route.php');
+	require_once ('core/route.php');
+	require_once ('core/view.php');
 	
-	$rout = new Route;
-	$rout->start();
+	$route = new Route;
+	$route->start();
 	
-	if (file_exists('view.php')) {
-		include_once ('view.php');
-	}
+	$view = new View;
+	$view->render();
