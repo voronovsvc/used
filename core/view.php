@@ -2,17 +2,22 @@
 	
 	class View {
 		
-		private $template_path = 'view/';
-		//private $layout = 'index.tpl';
+		// задача: подтянуть шаблон и воткнуть в него контент
 		
-		public function render($tpl_name) {
+		private $template_path = 'view/main/';
+		private $layout = 'index.tpl'; // 
+		
+		public function render() {
 			
-			$tpl_uri = $this->template_path . $tpl_name;
+			ob_start ();
 			
-			if (file_exists($tpl_uri)) {
-				include_once ($tpl_uri);
-			}
+			include_once ($this->template_path . $this->layout);
 			
+			$content = ob_get_contents();
+			
+			ob_end_clean();
+			
+			include_once ('view/layout.php'); // в него надо добавить index.tpl в него я  уже впихнул $content
 			
 		}// close render()
 		

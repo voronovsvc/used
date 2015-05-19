@@ -4,9 +4,8 @@
 		
 		public function index () {
 			
-			
 			$view = new View;
-			$view->render('main/index.tpl');
+			$view->render();
 			
 		}// close fun... index ()
 		

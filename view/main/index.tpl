@@ -1,3 +1,3 @@
 <div id="content">
-	<h1>Привет я index.tpl</h1>
+	<p>Привет я index.tpl и я вывожу контент в шаблон!</p>
 </div>
