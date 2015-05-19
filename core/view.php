@@ -3,6 +3,7 @@
 	class View {
 		
 		private $template_path = 'view/';
+		//private $layout = 'index.tpl';
 		
 		public function render($tpl_name) {
 			
