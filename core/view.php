@@ -2,9 +2,9 @@
 	
 	class View {
 		
-		// задача: подтянуть шаблон и воткнуть в него контент
+		// Р·Р°РґР°С‡Р°: РїРѕРґС‚СЏРЅСѓС‚СЊ С€Р°Р±Р»РѕРЅ Рё РІРѕС‚РєРЅСѓС‚СЊ РІ РЅРµРіРѕ РєРѕРЅС‚РµРЅС‚
 		
-		private $template_path = 'view/main/';
+		private $template_path = 'view/';
 		private $layout = 'view/layout.php'; // 
 		
 		public function render($tpl_content) {
@@ -17,7 +17,7 @@
 			
 			ob_end_clean();
 			
-			include_once ($this->layout); // в него надо добавить index.tpl в него я  уже впихнул $content
+			include_once ($this->layout); // РІ РЅРµРіРѕ РЅР°РґРѕ РґРѕР±Р°РІРёС‚СЊ index.tpl РІ РЅРµРіРѕ СЏ  СѓР¶Рµ РІРїРёС…РЅСѓР» $content
 			
 		}// close render()
 		

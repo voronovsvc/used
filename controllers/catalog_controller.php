@@ -2,12 +2,13 @@
 	
 	class Controller_Catalog {
 		
+		//priv
+		
 		public function index () {
 			
+			$view = new View;
+			$view->render('catalog/index.tpl');
 			
-			print 'Привет, Вы попали в каталог нашего крутого сайта!';
-			print '<br /> и пусть кто то решит поспорить!!!';
-		
 		}// close fun... index ()
 		
 	}// close Controller_Main

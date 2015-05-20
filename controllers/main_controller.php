@@ -5,7 +5,7 @@
 		public function index () {
 			
 			$view = new View;
-			$view->render('index.tpl');
+			$view->render('main/index.tpl');
 			
 		}// close fun... index ()
 		
