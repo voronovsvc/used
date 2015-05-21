@@ -4,12 +4,13 @@
 <meta charset="utf-8">
 <link rel="stylesheet" type="text/css" href="/css/style.css">
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 <script src="/js/scripts.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <title> <?php echo $title; ?> </title>
 </head>
 
-<body>
+<body role="document">
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -23,20 +24,8 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-            <li><a href="#">Link</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-                <li class="divider"></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li>
+            <li class="active"><a href="/">Главная</a></li>
+            <li><a href="/catalog">Каталог</a></li>
           </ul>
           <form class="navbar-form navbar-right">
             <div class="form-group">
@@ -45,24 +34,22 @@
             <div class="form-group">
               <input type="password" placeholder="Password" class="form-control">
             </div>
-            <button type="submit" class="btn btn-success">Войти</button>
+            <button type="submit" class="btn btn-success">Sign in</button>
           </form>
         </div><!--/.navbar-collapse -->
       </div>
     </nav>
 
-	<header id="header">
-		<h1>header</h1>
-  </header>
-
-  <div id="content" class="container">
+  <div id="content" class="container theme-showcase" role="main">
       <?php if (!empty($content)): ?>
         <?php print $content; ?>
       <?php endif; ?>
   </div>
 
-  <footer id="footer">
-  	<h3>footer</h3>
+  <div class="container">
+    <footer>
+        <p>© Company 2014</p>
   </footer>
+  </div>
 </body>
 </html>
