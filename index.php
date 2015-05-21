@@ -1,7 +1,8 @@
 <?php
 	
-	require_once ('core/route.php'); // подт€гиваем 
-	require_once ('core/view.php');
+	require_once ('app/core/controller.php');
+	require_once ('app/core/route.php'); // здесь подключаютс€ контроллеры
+	require_once ('app/core/view.php');
 	
 	$route = new Route;
 	$route->start();
