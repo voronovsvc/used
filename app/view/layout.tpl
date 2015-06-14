@@ -5,8 +5,14 @@
 <link rel="stylesheet" type="text/css" href="/css/style.css">
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+<?php if (!empty($css)): ?>
+<?php print $css; ?>
+<?php endif; ?>
 <script src="/js/scripts.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<?php if (!empty($js)): ?>
+<?php print $js; ?>
+<?php endif; ?>
 <title> <?php echo $title; ?> </title>
 </head>
 

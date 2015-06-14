@@ -1,7 +1,7 @@
 <?php
 	
 	require_once ('app/core/controller.php');
-	require_once ('app/core/route.php'); // çäåñü ïîäêëþ÷àþòñÿ êîíòðîëëåðû
+	require_once ('app/core/route.php'); // Ã§Ã¤Ã¥Ã±Ã¼ Ã¯Ã®Ã¤ÃªÃ«Ã¾Ã·Ã Ã¾Ã²Ã±Ã¿ ÃªÃ®Ã­Ã²Ã°Ã®Ã«Ã«Ã¥Ã°Ã»
 	require_once ('app/core/view.php');
 	
 	$route = new Route;
