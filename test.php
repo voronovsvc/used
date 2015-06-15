@@ -2,43 +2,24 @@
 	
 	// ПОЛИГОН
 	
-		function addJs ($ways) { //сеттер addJs принимает параметр $ways (рус. Пути)
-			
-			$links = explode(',', $ways);
-			
-			$i = 1;
-			while ($i < count ($links)) {
-				
-				$this->js[$i] = "<script type='text/javascript' src='" . $links[$i] . "'></script>";
-				$i++;
-			}
-			
-			$js = implode(' ', $this->js);
-			return $js;
-
-		}// close func... addJs
+	$scripts = "0 =>'/js/script1.js', '/js/script2.js', '/js/script3.js', '/js/script4.js'";
+	
+	$arr_scripts = array ($scripts);
+ 	
+	
 		
-		$ways = "один,два,три,четыре";
+	$i = 0;
+	while ($i < count ($arr_scripts)) {
 		
-		$links = explode(',', $ways);
+		$js[$i] = "<script src=\"" . $arr_scripts[$i] . "\"></script>\r";
+		$i++;
+	
+	}	
 		
 		
-		echo "<pre>";
-		print_r ($links);
-		echo "</pre>";
-		
-		
-		$links = implode(' ', $links);
-		
-		echo $links;
-		
-		
-		
-		
-		
-		
-		
-		
+	echo "<pre>";
+	print_r ($arr_scripts);
+	echo "<pre>";
 		
 		
 		

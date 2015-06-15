@@ -46,57 +46,49 @@
 			$this->layout = $layout;
 
 		}// close func... setLayout
-	
 		
-		// подключаю скрипты 
 		
-		public function addJs ($ways) { //сеттер addJs принимает параметр $ways (рус. Пути)
-			
-			// этот массив выводит один пустой элемент, тоесть if условие в лайауте не будет работать
-			$links = explode(', ', $ways); //вот от куда здесь взялся пустой элемент??? столько времени потратил!!!
-			$links = array_filter ($links); // удалил пустой элемент
-			
-			foreach ($links as $value ) {
+		/**
+		подключаем скрипты
+		**/ 
+		public function addJs ($scripts) { //сеттер addJs принимает параметр пути к скриптам
 				
-				$this->js[] = "<script type=\"text/javascript\" src=\"" . $value . "\"></script>\r";
-			}
-			
-			$js = implode('', $this->js);
-			return $js;
-
+				$i = 0;
+				while ($i < count ($scripts)) {
+					$this->js[] = "<script src=\"" . $scripts[$i] . "\"></script>\n";
+					$i++;
+				}
+				
 		}// close func... addJs
 		
 		
 		public function getJs () { // getter
 			
-			return $this->addJs ($ways);  // вопрос! почему я не мог вывести сеттер addJs?
+			$js = implode('', $this->js);
+			return $js;
 			
 		}// close func... getJs
 		
-		
-		public function addCss ($ways) { //сеттер addCss принимает параметр $ways (рус. Пути)
-			
-			$links = explode(', ', $ways); 
-			$links = array_filter ($links); // удалил пустой элемент, ХЗ от куда взявшийся
-			
-			foreach ($links as $value ) {
+		/**
+		подключаем стили
+		**/ 
+		public function addCss ($style) { //сеттер addcss принимает параметр пути к стилям
 				
-				$this->css[] = "<link rel=\"stylesheet\" type=\"text/css\" src=\"" . $value . "\">\r";
-			}
-			
-			$css = implode('', $this->css);
-			return $css;
-
+				$i = 0;
+				while ($i < count ($style)) {
+					$this->css[] = "<link rel=\"stylesheet\" type=\"text/css\" src=\"" . $style[$i] . "\">\n";
+					$i++;
+				}
+				
 		}// close func... addCss
 		
 		
-		
-		public function getCss () { // getter
+		public function getCss () { // getter выводит
 			
-			return $this->addCss ($ways); // вопрос! почему я не мог вывести сеттер addCss?
+			$css = implode('', $this->css);
+			return $css;
 			
 		}// close func... getCss
-		
 		
 	}// close View
 
