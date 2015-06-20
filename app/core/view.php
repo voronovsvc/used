@@ -53,10 +53,8 @@
 		**/ 
 		public function addJs ($scripts) { //сеттер addJs принимает параметр пути к скриптам
 				
-				$i = 0;
-				while ($i < count ($scripts)) {
-					$this->js[] = "<script src=\"" . $scripts[$i] . "\"></script>\n";
-					$i++;
+				foreach ($scripts as $val) {
+					$this->js[] = "<script src=\"" . $val . "\"></script>\n";
 				}
 				
 		}// close func... addJs
@@ -72,12 +70,10 @@
 		/**
 		подключаем стили
 		**/ 
-		public function addCss ($style) { //сеттер addcss принимает параметр пути к стилям
+		public function addCss ($styles) { //сеттер addcss принимает параметр пути к стилям
 				
-				$i = 0;
-				while ($i < count ($style)) {
-					$this->css[] = "<link rel=\"stylesheet\" type=\"text/css\" src=\"" . $style[$i] . "\">\n";
-					$i++;
+				foreach ($styles as $val) {
+					$this->css[] = "<link rel=\"stylesheet\" type=\"text/css\" src=\"" . $val . "\">\n";
 				}
 				
 		}// close func... addCss
