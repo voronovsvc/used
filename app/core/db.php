@@ -25,8 +25,8 @@
 		
 		private function __construct() {	// *
 			
-			$mysql = 'mysql:host='.self::DB_SERV.';dbname='.self::DB_NAME;
-			$this->pdo = new PDO($mysql, self::DB_USER, self::DB_PASS);
+			$mysql = 'mysql:host='.DB_SERV.';dbname='.DB_NAME;
+			$this->pdo = new PDO($mysql, DB_USER, DB_PASS);
 			
 		} // close func.. __construct
 		
