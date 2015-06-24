@@ -42,15 +42,19 @@
 		} // close func.. getInstance
 		
 		
-		public function query ($sql) { // это сеттер?
+		public /*?*/ function query ($sql) { // это сеттер? может его приватным сделать?
 			
-			// new DB; - создали объект!
-			// $obj = new DB; - записав объект в переменную, создали в ней экземпляр класса...
-			
+			// к экзкмпляру класса PDO, применили метод prepare (), записали в переменную
 			$this->statement = $this->pdo->prepare ($sql);
-			//return $this->statement;
 			
 		}// close func.. query
+		
+		public function execute () {
+			
+			return $this->statement->execute();
+			
+			
+		} // close func.. execute
 		
 		
 		private function __wakeup () {}		// **
