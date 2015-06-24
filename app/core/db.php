@@ -19,8 +19,19 @@
 		
 		private static
 			$instance = null; //экземпляр объекта со значением null
+		private $pdo;
+		private $statement;
 			
-		public static function getInstance ($user, $pass, $dbname, $server){ // это геттер? по функциям похож на сеттер!
+		
+		private function __construct() {	// *
+			
+			$mysql = 'mysql:host='.self::DB_SERV.';dbname='.self::DB_NAME;
+			$this->pdo = new PDO($mysql, self::DB_USER, self::DB_PASS);
+			
+		} // close func.. __construct
+		
+		
+		public static function getInstance (){ // метод, дающий уникальость классу
 			
 			if (null === self::$instance) {
 				// создали экземпляр класса если $instance тождественен null
@@ -28,9 +39,20 @@
 			}
 			// вернули результат в функцию
 			return self::$instance;
-		}
+		} // close func.. getInstance
 		
-		private function __construct() {}	// *
+		
+		public function query ($sql) { // это сеттер?
+			
+			// new DB; - создали объект!
+			// $obj = new DB; - записав объект в переменную, создали в ней экземпляр класса...
+			
+			$this->statement = $this->pdo->prepare ($sql);
+			//return $this->statement;
+			
+		}// close func.. query
+		
+		
 		private function __wakeup () {}		// **
 		private function __clone () {}		// ***
 		
