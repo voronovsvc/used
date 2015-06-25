@@ -45,9 +45,17 @@
 		public /*?*/ function query ($sql) { // это сеттер? может его приватным сделать?
 			
 			// к экзкмпляру класса PDO, применили метод prepare (), записали в переменную
+			try {
 			$this->statement = $this->pdo->prepare ($sql);
+			}
+			catch (PDOException $e) { // почитать про исключения!
+				
+				echo "Нет подключения к базе данных";
+				exit;
+			}
 			
 		}// close func.. query
+		
 		
 		public function execute () {
 			
@@ -55,6 +63,35 @@
 			
 			
 		} // close func.. execute
+		
+		
+		public function bind ($placeholder, $value, $type = null) {
+			
+			//проверка переменной на ее тип если по-умолчанию null
+			if (is_null ($value)) {
+				switch (true) {
+					case is_int ($value):
+					$type = PDO::PARAM_INT;
+					break;
+					case is_bool ($value):
+					$type = PDO::PARAM_BOOL;
+					break;
+					case is_null ():
+					$type = PDO::PARAM_NULL;
+					break;
+					default:
+					$type = false;
+				}
+					
+			}
+			
+			if (!$type)
+			$this->statement->bindValue($placeholder, $value, $type);
+			else
+			exit ("Преременная не прошла типовую проверку");
+			
+			
+		} // close func .. bind
 		
 		
 		private function __wakeup () {}		// **
