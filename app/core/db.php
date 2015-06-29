@@ -14,7 +14,6 @@
 /*/
 
 
-
 	class DB { // класс Singleton
 
 		private static
@@ -22,19 +21,10 @@
 		private $pdo;
 		private $statement;
 
-
 		private function __construct() {	// *
 
 			$mysql = 'mysql:host='.DB_SERV.';dbname='.DB_NAME;
-
-			try {
 			$this->pdo = new PDO($mysql, DB_USER, DB_PASS);
-			}
-			catch (PDOException $e) { // почитать про исключения!
-
-				echo "Нет подключения к базе данных";
-				exit;
-			}
 
 		} // close func.. __construct
 
@@ -43,33 +33,40 @@
 
 			if (null === self::$instance) {
 				// создали экземпляр класса если $instance тождественен null
-				// памятка: self - это ссылка на сам класс
-				// $this - ссылка на текущий объект в классе
-				self::$instance = new self ();
+				try {
+				self::$instance = new self (); // self - это ссылка на сам класс, тоесть на DB в нашем случаи
+				}
+				catch (PDOException $e) { // почитать про исключения!
+
+					echo "Нет подключения к базе данных";
+					exit;
+				}
+
 			}
 			// вернули результат в функцию
 			return self::$instance;
 		} // close func.. getInstance
 
 
-		public function query ($sql, $param = array()) {
+		public function query ($sql) { // это сеттер? может его приватным сделать?
 
-			// к экзкмпляру класса PDO, применили метод prepare (),
-			// записали в переменную
+			// к экзкмпляру класса PDO, применили метод prepare (), записали в переменную
 			$this->statement = $this->pdo->prepare ($sql);
-
-			if (!empty ($param)) {
-				foreach ($param as $key => $val) {
-					$this->bind ($key, $val); //по умолчанию $type = null
-				}
-			}
 
 		}// close func.. query
 
 
+		public function execute () {
+
+			return $this->statement->execute();
+
+
+		} // close func.. execute
+
+
 		public function bind ($placeholder, $value, $type = null) {
 
-			// проверка переменной на ее тип если по-умолчанию null
+			//проверка переменной на ее тип если по-умолчанию null
 			if (is_null ($value)) {
 				switch (true) {
 					case is_int ($value):
@@ -118,7 +115,6 @@
 	приватный конструктор, который будет вызываться только внутри нашего класса.
 	Например:
 	class view {
-
 		private function __construct () {}
 	}
 
@@ -137,12 +133,5 @@
 	Объявив в классе приватный метод __clone, мы так же, как и с конструктором,
 	вызовим ошибку, при клонировании объекта из вне, так как клон может быть вызван
 	только внутри класса, согласно указанной, приватной, облости видимости.
-
 */
-
-
-
-
-
-
 ?>

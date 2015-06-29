@@ -1,12 +1,13 @@
 <?php
-	/**
+	/*
 
 		принимаем от контроллеров страниц параметры в
 		сеттеры обрабатываем геттерами, если необходимо, записываем
 		результат в свойства и выводим в render
 
 
-	**/
+	*/
+
 	class View {
 
 		// задача: подтянуть шаблон и воткнуть в него контент
@@ -23,12 +24,10 @@
 			$js = $this->getJs();
 			$css = $this->getCss();
 			$title = $this->title;
-
 			ob_start ();
 			include_once ($this->template_path . $tpl_content);
 			$content = ob_get_contents();
 			ob_end_clean();
-
 			include_once ($this->layout); // в него надо добавить index.tpl в него я  уже впихнул $content
 
 		}// close func... render()
@@ -49,10 +48,10 @@
 
 
 		public function addJs ($scripts) { //сеттер addJs принимает параметр пути к скриптам
-				//подключаем скрипты
-				foreach ($scripts as $val) {
-					$this->js[] = "<script src=\"" . $val . "\"></script>\n";
-				}
+			//подключаем скрипты
+			foreach ($scripts as $val) {
+				$this->js[] = "<script src=\"" . $val . "\"></script>\n";
+			}
 
 		}// close func... addJs
 
@@ -64,12 +63,12 @@
 
 		}// close func... getJs
 
-		
+
 		public function addCss ($styles) { //сеттер addcss принимает параметр пути к стилям
-				//подключаем стили
-				foreach ($styles as $val) {
-					$this->css[] = "<link rel=\"stylesheet\" type=\"text/css\" src=\"" . $val . "\">\n";
-				}
+			//подключаем стили
+			foreach ($styles as $val) {
+				$this->css[] = "<link rel=\"stylesheet\" type=\"text/css\" src=\"" . $val . "\">\n";
+			}
 
 		}// close func... addCss
 
