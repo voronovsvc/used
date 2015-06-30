@@ -2,6 +2,14 @@
 
 /*/
 
+	 Сеттер и Геттер моими словами - кратко!
+	 Управление даннымми записываеми в свойсво класса (сеттер), и выдаваемого
+	пользователю (геттер)
+	 Задача сеттера - дать возможность модифицировать или оставить как есть
+	данные, которые заносятся в свойство класса.
+	 Задача геттера - дать возможность модифицировать или оставить как есть
+	данные, которые выдаются пользователю.
+
 	Одиночка (англ. Singleton) — порождающий шаблон проектирования,
 	гарантирующий, что в однопоточном приложении будет единственный
 	экземпляр класса с глобальной точкой доступа.
@@ -23,35 +31,43 @@
 
 		private function __construct() {	// *
 
-			$mysql = 'mysql:host='.DB_SERV.';dbname='.DB_NAME;
-			$this->pdo = new PDO($mysql, DB_USER, DB_PASS);
+			try { // проверяем выражение на исключения
+			// создали экземпляр класса если $instance тождественена null
+				$mysql = 'mysql:host='.DB_SERV.';dbname='.DB_NAME;
+				$this->pdo = new PDO($mysql, DB_USER, DB_PASS);
+			}
+			catch (PDOException $e) { // почитать про исключения!
+
+				echo "Нет подключения к базе данных";
+				exit;
+			}
 
 		} // close func.. __construct
 
 
 		public static function getInstance (){ // метод, дающий уникальость классу
 
-			if (null === self::$instance) {
-				// создали экземпляр класса если $instance тождественен null
-				try {
-				self::$instance = new self (); // self - это ссылка на сам класс, тоесть на DB в нашем случаи
-				}
-				catch (PDOException $e) { // почитать про исключения!
+			if (null === self::$instance) { // self - это ссылка на текущий класс
 
-					echo "Нет подключения к базе данных";
-					exit;
-				}
+				// создали экземпляр класса если $instance тождественена null
+				self::$instance = new self ();
 
 			}
-			// вернули результат в функцию
+			// вернули результат в функцию, будем выводить ее в index.php
 			return self::$instance;
+
 		} // close func.. getInstance
 
 
-		public function query ($sql) { // это сеттер? может его приватным сделать?
+		public function query ($sql, $placeholder = array ()) {
 
-			// к экзкмпляру класса PDO, применили метод prepare (), записали в переменную
+			// к объекту PDO, применили метод prepare (), записали в переменную
 			$this->statement = $this->pdo->prepare ($sql);
+
+			foreach ($placeholder as $placeholder_name => $value) {
+				$this->bind ($placeholder_name, $value);
+				// третий параметр $type - отработает по-умолчанию
+			}
 
 		}// close func.. query
 
