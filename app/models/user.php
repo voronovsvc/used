@@ -2,7 +2,7 @@
 
   class  User_Model extends Models {
     private $table_name = "users";
-    public $id; // id у нас автоматом вбивается, зачем она здесь?
+    public $id;
     public $username;
     public $password;
     public $mail;

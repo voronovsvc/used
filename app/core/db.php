@@ -61,13 +61,28 @@
 
 		public function query($sql, $placeholder = array ()) {
 
-			// к объекту PDO, применили метод prepare (), записали в переменную
+			/*
+			так понимаю, что запрос разбивается на две части:
+			1ая часть запрос с метками
+			2ая часть присвоение меткам значения через массив
+			и они обрабатываются разными методами, а полноценный запрос формирует
+			метод execute();! Да, нет?
+			пиздец, как сложно!)
+			*/
+			// к объекту PDO, применили метод prepare(), записали в переменную
+			// метод prepare() подготавливает запрос к БД
 			$this->statement = $this->pdo->prepare ($sql);
 
 			foreach ($placeholder as $placeholder_name => $value) {
 				$this->bind ($placeholder_name, $value);
 				// третий параметр $type - отработает по-умолчанию
 			}
+		}
+
+		public function execute() { // говорит фас и отправляет запрос на выполнение
+
+			return $this->statement->execute();
+
 		}
 
 
@@ -90,15 +105,9 @@
 				}
 
 			}
-
+			// так понимаю bindValue подвинчивает метку к значению в запросе $sql
+			// в query();
 			$this->statement->bindValue($placeholder, $value, $type);
-
-		}
-
-
-		public function execute() { // тож не понятно, его задачи?
-
-			return $this->statement->execute();
 
 		}
 
