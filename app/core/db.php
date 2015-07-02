@@ -25,14 +25,14 @@
 	class DB { // класс Singleton
 
 		private static
-			$instance = null; //экземпляр объекта со значением null
+			$instance = null; //переменная для объекта,  по-умолчанию равна null
 		private $pdo;
 		private $statement;
 
-		private function __construct() {	// *
+		private function __construct() {
 
 			try { // проверяем выражение на исключения
-			// создали экземпляр класса если $instance тождественена null
+
 				$mysql = 'mysql:host='.DB_SERV.';dbname='.DB_NAME;
 				$this->pdo = new PDO($mysql, DB_USER, DB_PASS);
 			}
@@ -42,10 +42,10 @@
 				exit;
 			}
 
-		} // close func.. __construct
+		}
 
 
-		public static function getInstance (){ // метод, дающий уникальость классу
+		public static function getInstance() { // метод, дающий уникальость классу
 
 			if (null === self::$instance) { // self - это ссылка на текущий класс
 
@@ -56,10 +56,10 @@
 			// вернули результат в функцию, будем выводить ее в index.php
 			return self::$instance;
 
-		} // close func.. getInstance
+		}
 
 
-		public function query ($sql, $placeholder = array ()) {
+		public function query($sql, $placeholder = array ()) {
 
 			// к объекту PDO, применили метод prepare (), записали в переменную
 			$this->statement = $this->pdo->prepare ($sql);
@@ -68,19 +68,10 @@
 				$this->bind ($placeholder_name, $value);
 				// третий параметр $type - отработает по-умолчанию
 			}
-
-		}// close func.. query
-
-
-		public function execute () {
-
-			return $this->statement->execute();
+		}
 
 
-		} // close func.. execute
-
-
-		public function bind ($placeholder, $value, $type = null) {
+		public function bind($placeholder, $value, $type = null) {
 
 			//проверка переменной на ее тип если по-умолчанию null
 			if (is_null ($value)) {
@@ -102,22 +93,19 @@
 
 			$this->statement->bindValue($placeholder, $value, $type);
 
-		} // close func .. bind
+		}
 
 
-		public function execute () {
+		public function execute() { // тож не понятно, его задачи?
 
 			return $this->statement->execute();
 
-		} // close func.. execute
+		}
 
+		private function __wakeup() {}
+		private function __clone() {}
 
-		private function __wakeup () {}		// **
-		private function __clone () {}		// ***
-
-	} // close DB
-
-
+	}
 
 
 /*
