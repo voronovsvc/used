@@ -24,46 +24,34 @@
         '$this->created',
         '$this->modified'
       )";
-
-      $connect = DB::getInstance (); // создали Объект
-
-      if ($connect->query($sql) === TRUE) { // проверили как отработал метод
-        echo "Запись успешная";
-      } else {
-        echo "Ошибка в запросе или его обработке";
-      }
+      // здесь один параметр, так как условие не нужно, а в таблице сработает
+      // первичный ключ длянового пользователя
+      // $placeholder (второй параметр)- отработает по-умолчанию
+      // и именно в этом запросе не нужен
+      $this->db->query($sql);
+      $this->db->execute();
 
     }
 
 
     public function delete ($id) {
 
-      $sql = "DELETE FROM users WHERE id=$id";
-
-      $connect = DB::getInstance (); // создали Объект
-
-      if ($connect->query($sql) === TRUE) { // проверили как отработал метод
-        echo "Пользватель удален";
-      } else {
-        echo "Ошибка в запросе или его обработке";
-      }
+      $sql = "DELETE FROM users WHERE id=:id"; // :id надо в ковычки брать?
+      $this->db->query($sql, array(':id' => $id));
+      $this->db->execute();
     }
 
     public function find ($id) {
 
-      $sql = "SELECT * FROM users WHERE id=$id";
+      $sql = "SELECT * FROM users WHERE id=:id";
+      $this->db->query($sql, array(':id' => $id));
+      $this->db->execute();
 
-      $connect = DB::getInstance (); // создали Объект
-
-      if ($result = $connect->query($sql) === TRUE) {
-        // вытягиваем данные пользователя
-        // записываем в одноименные свойства
-        $row = $connect->query($sql);
-
-
-      } else {
-        echo "Ошибка в запросе или его обработке";
-      }
+      $this->username = ;
+      $this->password = ;
+      $this->mail = ;
+      $this->created = ;
+      $this->modified = ;
     }
 
   }
