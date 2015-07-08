@@ -86,6 +86,12 @@
 		}
 
 
+		public function fetchAll() {
+			$this->execute();
+			return $this->statement->fetchAll();
+		}
+
+
 		public function bind($placeholder, $value, $type = null) {
 
 			//проверка переменной на ее тип если по-умолчанию null
@@ -147,4 +153,3 @@
 	вызовим ошибку, при клонировании объекта из вне, так как клон может быть вызван
 	только внутри класса, согласно указанной, приватной, облости видимости.
 */
-?>

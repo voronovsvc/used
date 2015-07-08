@@ -4,8 +4,6 @@
 
 		public function start () {
 
-			header ('Content-Type: text/html; charset=utf-8');
-
 			$controller_name = 'Main';
 			$action = 'index';
 
@@ -45,5 +43,3 @@
 		}
 
 	}// close Rout
-
-?>

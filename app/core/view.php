@@ -81,5 +81,3 @@
 		}// close func... getCss
 
 	}// close View
-
-?>

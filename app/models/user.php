@@ -10,7 +10,7 @@
     public $modified;
 
     public function save() {
-
+      // доработать инсерт через bind
       $sql = "INSERT INTO users (
         username,
         password,
@@ -18,17 +18,23 @@
         created,
         modified
       ) VALUES (
-        '$this->username',
-        '$this->password',
-        '$this->mail',
-        '$this->created',
-        '$this->modified'
+        ':username',
+        ':password',
+        ':mail',
+        ':created',
+        ':modified'
       )";
-      // здесь один параметр, так как условие не нужно, а в таблице сработает
-      // первичный ключ длянового пользователя
-      // $placeholder (второй параметр)- отработает по-умолчанию
-      // и именно в этом запросе не нужен
-      $this->db->query($sql);
+      // все существующие переменные надо пропкскать через плейсхолдеры
+      $this->db->query(
+      $sql,
+      array(
+        ':username' => $this->username,
+        ':password' => $this->password,
+        ':mail'     => $this->mail,
+        ':created'  => $this->created,
+        ':modified' => $this->modified
+        )
+      );
       $this->db->execute();
 
     }
@@ -40,6 +46,7 @@
       $this->db->query($sql, array(':id' => $id));
       $this->db->execute();
     }
+
 
     public function find ($id) {
 
@@ -55,5 +62,3 @@
     }
 
   }
-
- ?>
