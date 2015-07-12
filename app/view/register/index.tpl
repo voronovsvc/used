@@ -1,13 +1,13 @@
 <p>Здесь ворганим форму регистрации!</p>
-<form action="/register" method="post">
+<form action="register" method="post">
 <div>
-  <input type="text" name="" placeholder="укажите имя">
+  <input type="text" name="username" placeholder="укажите имя">
 </div>
 <div>
-  <input type="text" name="" placeholder="e-mail">
+  <input type="text" name="mail" placeholder="e-mail">
 </div>
 <div>
-  <input type="text" name="" placeholder="пароль">
+  <input type="text" name="password" placeholder="пароль">
 </div>
 <div>
   <input type="text" name="" placeholder="повторите пароль">
