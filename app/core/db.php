@@ -74,6 +74,14 @@ class DB
 
     public function fetchAll()
     {
+        /*
+        поясненире метоода:
+        1. вызвали метод execute(), выполнили запрос (получили bool)
+        (как я понгял запрос сохранили в statement)
+        2. теперь к переменной statement применяем метод fetchAll(),
+        который вернет объекты stdClass* из данныз хранящихся в statement
+        stdClass - это класс для временного хранения информации
+        */
         $this->execute();
         return $this->statement->fetchAll();
     }

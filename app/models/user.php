@@ -53,11 +53,12 @@ class  User_Model extends Models
         $sql = "SELECT * FROM users WHERE id=:id";
         $this->db->query($sql, array(':id' => $id));
         $this->db->execute();
-        // надо каждой переменной присвоить значение
-        $this->username = ;
-        $this->password = ;
-        $this->mail = ;
-        $this->created = ;
-        $this->modified = ;
+
+        $stdClass = $this->fetchAll();
+        $this->username  = $stdClass->username;
+        $this->password  = $stdClass->password;
+        $this->mail      = $stdClass->mail;
+        $this->created   = $stdClass->created;
+        $this->modified  = $stdClass->modified;
     }
 }
