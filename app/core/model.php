@@ -6,6 +6,6 @@ class Model
 
     public function __construct()
     {
-        $this->db = DB::getIntance();
+        $this->db = DB::getInstance();
     }
 }

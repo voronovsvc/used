@@ -9,11 +9,12 @@ class  User_Model extends Model
     public $username;
     public $password;
     public $mail;
-    public $created/* = date("Y-m-d H:i:s")*/;
+    public $created;
     public $modified;
 
     public function save()
     {
+        $this->created = date("Y-m-d H:i:s");
         $sql = "INSERT INTO users (
             username,
             password,
