@@ -2,14 +2,14 @@
 /*
 
 */
-class  User_Model extends Models
+class  User_Model extends Model
 {
     private $table_name = "users";
     public $id;
     public $username;
     public $password;
     public $mail;
-    public $created = date("Y-m-d H:i:s");
+    public $created/* = date("Y-m-d H:i:s")*/;
     public $modified;
 
     public function save()

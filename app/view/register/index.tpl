@@ -3,7 +3,7 @@
 <div>
   <input type="text" name="username" placeholder="укажите имя">
 </div>
-<div>
+<!--<div>
   <input type="text" name="mail" placeholder="e-mail">
 </div>
 <div>
@@ -11,7 +11,7 @@
 </div>
 <div>
   <input type="text" name="" placeholder="повторите пароль">
-</div>
+</div>-->
 <div>
   <input type="submit" value="Зарегистрироваться">
 </div>

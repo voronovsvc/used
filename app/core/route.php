@@ -1,4 +1,15 @@
 <?php
+/*
+Что делает класс Route?
+1. Берет параметры из адресной строки $uri = explode('/', $_SERVER['REQUEST_URI'])...
+Условились что в адресной строке:
+$uri[0] - домен (не нужен)
+$uri[1] - имя контроллера
+$uri[2] - имя метода
+
+2. В методе start() формирует экземпляр класса
+
+*/
 class Route
 {
     public function start()
@@ -21,10 +32,17 @@ class Route
         '_controller.php';
 
         if (file_exists($dir_check)) {
+            /*
+            В теле этого условия:
+            1. Записали объект с именем класса
+            2. Подтянули файл с контроллером!!!!!!!!!!!!!!!!!!!!
+            */
             include_once ($dir_check);
+            // подтянули фаил с имя_контроллером
 
             $class_name = 'Controller_' . $controller_name;
             $controller = new $class_name;
+            //
 
             // на всякий случай проверили, что у этого класса есть нужный нам метод
             if(method_exists($controller, $action)) {
