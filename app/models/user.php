@@ -15,6 +15,7 @@ class  User_Model extends Model
     public function save()
     {
         $this->created = date("Y-m-d H:i:s");
+        $this->created = date("Y-m-d H:i:s");
         $sql = "INSERT INTO users (
             username,
             password,
@@ -28,7 +29,7 @@ class  User_Model extends Model
             ':created',
             ':modified'
         )";
-        // все существующие переменные надо пропкскать через плейсхолдеры
+        // все существующие переменные надо пропускать через плейсхолдеры
         $this->db->query(
             $sql,
             array(

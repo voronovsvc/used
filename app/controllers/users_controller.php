@@ -11,9 +11,21 @@ class Controller_Users extends Controller
             2. залить в базу
             */
 
-            $user = new User_Model;
-            $user->save();
+            $password = ($_POST[password] === $_POST[confirm_pass]) ?
+                $_POST[password] : '';
 
+            if (
+            !empty($_POST[username]) and
+            !empty($password) and
+            !empty($_POST[mail])
+            ) { echo 'проверили наличие';
+                $user = new User_Model;
+                $user->username = $_POST[username];
+                $user->password = $password;
+                $user->mail     = $_POST[mail];
+                $user->created  = $_POST[confirm_pass];
+                $user->save();
+            }
 
         } else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             /*
