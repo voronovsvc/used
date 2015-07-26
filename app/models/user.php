@@ -9,25 +9,22 @@ class  User_Model extends Model
     public $username;
     public $password;
     public $mail;
-    public $created;
-    public $modified;
+    public $created;  // созданный
+    public $modified; // модифицированный
 
     public function save()
     {
-        $this->created = date("Y-m-d H:i:s");
-        $this->created = date("Y-m-d H:i:s");
+        // плейсхолдеры в VALUES без ковычек
         $sql = "INSERT INTO users (
             username,
             password,
             mail,
-            created,
-            modified
+            created
         ) VALUES (
-            ':username',
-            ':password',
-            ':mail',
-            ':created',
-            ':modified'
+            :username,
+            :password,
+            :mail,
+            :created
         )";
         // все существующие переменные надо пропускать через плейсхолдеры
         $this->db->query(
@@ -36,8 +33,7 @@ class  User_Model extends Model
             ':username' => $this->username,
             ':password' => $this->password,
             ':mail'     => $this->mail,
-            ':created'  => $this->created,
-            ':modified' => $this->modified
+            ':created'  => $this->created
             )
         );
         $this->db->execute();

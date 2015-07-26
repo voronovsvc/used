@@ -11,20 +11,26 @@ class Controller_Users extends Controller
             2. залить в базу
             */
 
-            $password = ($_POST[password] === $_POST[confirm_pass]) ?
-                $_POST[password] : '';
+            $password = ($_POST['password'] === $_POST['confirm_pass']) ?
+                $_POST['password'] : '';
 
             if (
-            !empty($_POST[username]) and
+            !empty($_POST['username']) and
             !empty($password) and
-            !empty($_POST[mail])
-            ) { echo 'проверили наличие';
+            !empty($_POST['mail']) and
+            empty($_POST['id'])
+            ) {
                 $user = new User_Model;
-                $user->username = $_POST[username];
+                $user->username = $_POST['username'];
                 $user->password = $password;
-                $user->mail     = $_POST[mail];
-                $user->created  = $_POST[confirm_pass];
+                $user->mail     = $_POST['mail'];
+                $user->created  = date("Y-m-d H:i:s");
                 $user->save();
+            } else {
+                $user = new User_Model;
+                $user->$modified = date("Y-m-d H:i:s");
+                echo 'здесь update, так как есть все параметры
+                включая id';
             }
 
         } else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
