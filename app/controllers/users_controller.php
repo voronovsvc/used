@@ -5,43 +5,17 @@ class Controller_Users extends Controller
     public function register()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            /*
-            если Post, значит заполнена форма
-            1. проверить данные на наличие и допустимость
-            2. залить в базу
-            */
-
-            $password = ($_POST['password'] === $_POST['confirm_pass']) ?
-                $_POST['password'] : '';
-
-            if (
-            !empty($_POST['username']) and
-            !empty($password) and
-            !empty($_POST['mail']) and
-            empty($_POST['id'])
-            ) {
-                $user = new User_Model;
-                $user->username = $_POST['username'];
-                $user->password = $password;
-                $user->mail     = $_POST['mail'];
-                $user->created  = date("Y-m-d H:i:s");
-                $user->save();
-            } else {
-                $user = new User_Model;
-                $user->$modified = date("Y-m-d H:i:s");
-                echo 'здесь update, так как есть все параметры
-                включая id';
-            }
-
+          $user = new User_Model;
+          $user->username = $_POST['username'];
+          $user->password = $_POST['password'];
+          $user->mail     = $_POST['mail'];
+          $user->save();
         } else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-            /*
-            если Get, значит показываем страницу с формой пользователю
-            */
-            $this->view->addJs(array('/js/script1.js', '/js/script2.js', '/js/script3.js', '/js/script4.js'));
-            $this->view->addCss(array('/css/style1.css','/css/style2.css','/css/style3.css'));
-            $this->view->setTitle ('Регистрация нового пользователя');
-            $this->view->setLayout ('app/view/layout.tpl');
-            $this->view->render ('register/index.tpl');
+          //$this->view->addJs(array('/js/script1.js', '/js/script2.js', '/js/script3.js', '/js/script4.js'));
+          //$this->view->addCss(array('/css/style1.css','/css/style2.css','/css/style3.css'));
+          $this->view->setTitle ('Регистрация нового пользователя');
+          $this->view->setLayout ('app/view/layout.tpl');
+          $this->view->render ('register/index.tpl');
         }
     }
 }

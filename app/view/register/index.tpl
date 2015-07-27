@@ -4,13 +4,13 @@
   <input type="text" name="username" placeholder="укажите имя">
 </div>
 <div>
-  <input type="text" name="mail" placeholder="e-mail">
+  <input type="email" name="mail" placeholder="e-mail">
 </div>
 <div>
-  <input type="text" name="password" placeholder="пароль">
+  <input type="password" name="password" placeholder="пароль">
 </div>
 <div>
-  <input type="text" name="confirm_pass" placeholder="повторите пароль">
+  <input type="password" name="confirm_pass" placeholder="повторите пароль">
 </div>
 <div>
   <input type="submit" value="Зарегистрироваться">
